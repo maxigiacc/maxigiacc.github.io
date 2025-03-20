@@ -1,0 +1,13 @@
+# Evita file di sistema macOS
+.DS_Store
+
+# Evita cartelle di dipendenze (se hai node o altri tools)
+node_modules/
+dist/
+build/
+
+# Evita file temporanei
+*.log
+*.tmp
+*.swp
+

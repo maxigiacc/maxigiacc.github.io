@@ -270,6 +270,7 @@ a {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+  z-index: 0;
 }
 
 .card::after {
@@ -280,10 +281,16 @@ a {
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  z-index: 0;
 }
 
 .card:hover::after {
   opacity: 1;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .card-contrast {

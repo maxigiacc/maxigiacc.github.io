@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { experiences, site } from "../data";
 
 export function ExperiencePage() {
@@ -13,9 +14,9 @@ export function ExperiencePage() {
               risultato.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="./contatti.html">
+              <Link className="button primary" to="/contatti">
                 Collabora con me
-              </a>
+              </Link>
               <a className="button ghost" href={site.cvUrl} target="_blank" rel="noopener">
                 CV completo
               </a>

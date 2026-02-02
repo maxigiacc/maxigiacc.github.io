@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Toast } from "./components/Toast";
@@ -20,23 +21,20 @@ const themeLabels: Record<ThemeName, string> = {
 };
 
 const footerSubtitles: Record<string, string> = {
-  home: "Portfolio personale",
-  skills: "Competenze tecniche",
-  experience: "Esperienze professionali",
-  education: "Formazione",
-  projects: "Progetti",
-  contact: "Contatti",
+  "/": "Portfolio personale",
+  "/competenze": "Competenze tecniche",
+  "/esperienze": "Esperienze professionali",
+  "/formazione": "Formazione",
+  "/progetti": "Progetti",
+  "/contatti": "Contatti",
 };
 
-interface AppProps {
-  page: string;
-}
-
-export function App({ page }: AppProps) {
+export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastVisible, setToastVisible] = useState(false);
   const toastTimer = useRef<number | null>(null);
+  const location = useLocation();
 
   const initialTheme = useMemo<ThemeName>(() => {
     const stored = localStorage.getItem("theme") as ThemeName | null;
@@ -113,7 +111,11 @@ export function App({ page }: AppProps) {
 
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, [page]);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     return () => {
@@ -123,36 +125,25 @@ export function App({ page }: AppProps) {
     };
   }, []);
 
-  const pageNode = (() => {
-    switch (page) {
-      case "skills":
-        return <SkillsPage />;
-      case "experience":
-        return <ExperiencePage />;
-      case "education":
-        return <EducationPage />;
-      case "projects":
-        return <ProjectsPage />;
-      case "contact":
-        return <ContactPage onCopyEmail={handleCopyEmail} />;
-      case "home":
-      default:
-        return <HomePage />;
-    }
-  })();
-
-  const subtitle = footerSubtitles[page] ?? "Portfolio";
+  const subtitle = footerSubtitles[location.pathname] ?? "Portfolio";
 
   return (
     <>
       <Header
-        currentPage={page}
         menuOpen={menuOpen}
         onToggleTheme={handleToggleTheme}
         onToggleMenu={() => setMenuOpen((open) => !open)}
         onNavigate={() => setMenuOpen(false)}
       />
-      {pageNode}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/competenze" element={<SkillsPage />} />
+        <Route path="/esperienze" element={<ExperiencePage />} />
+        <Route path="/formazione" element={<EducationPage />} />
+        <Route path="/progetti" element={<ProjectsPage />} />
+        <Route path="/contatti" element={<ContactPage onCopyEmail={handleCopyEmail} />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       <Footer subtitle={subtitle} />
       <Toast message={toastMessage} visible={toastVisible} />
     </>

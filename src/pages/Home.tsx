@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { cvHighlights, focusAreas, heroStats, profilePoints, site } from "../data";
 
 export function HomePage() {
@@ -16,9 +17,9 @@ export function HomePage() {
               <a className="button primary" href={site.cvUrl} target="_blank" rel="noopener">
                 Scarica CV (EN)
               </a>
-              <a className="button ghost" href="./progetti.html">
+              <Link className="button ghost" to="/progetti">
                 Vedi progetti
-              </a>
+              </Link>
             </div>
             <div className="hero-stats">
               {heroStats.map((stat) => (
@@ -91,12 +92,12 @@ export function HomePage() {
                 ))}
               </ul>
               <div className="hero-actions">
-                <a className="button ghost" href="./esperienze.html">
+                <Link className="button ghost" to="/esperienze">
                   Vedi esperienze
-                </a>
-                <a className="button ghost" href="./progetti.html">
+                </Link>
+                <Link className="button ghost" to="/progetti">
                   Vedi progetti
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -6,12 +6,12 @@ export const site = {
 };
 
 export const navItems = [
-  { label: "Home", href: "./index.html", page: "home" },
-  { label: "Competenze", href: "./competenze.html", page: "skills" },
-  { label: "Esperienze", href: "./esperienze.html", page: "experience" },
-  { label: "Formazione", href: "./formazione.html", page: "education" },
-  { label: "Progetti", href: "./progetti.html", page: "projects" },
-  { label: "Contatti", href: "./contatti.html", page: "contact" },
+  { label: "Home", to: "/", page: "home" },
+  { label: "Competenze", to: "/competenze", page: "skills" },
+  { label: "Esperienze", to: "/esperienze", page: "experience" },
+  { label: "Formazione", to: "/formazione", page: "education" },
+  { label: "Progetti", to: "/progetti", page: "projects" },
+  { label: "Contatti", to: "/contatti", page: "contact" },
 ];
 
 export const heroStats = [

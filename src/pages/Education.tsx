@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { education, site } from "../data";
 
 export function EducationPage() {
@@ -13,9 +14,9 @@ export function EducationPage() {
               <a className="button primary" href={site.cvUrl} target="_blank" rel="noopener">
                 CV completo
               </a>
-              <a className="button ghost" href="./progetti.html">
+              <Link className="button ghost" to="/progetti">
                 Tesi e progetti
-              </a>
+              </Link>
             </div>
           </div>
           <div className="card" data-reveal>

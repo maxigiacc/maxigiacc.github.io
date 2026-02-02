@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { languages, skillFilters, skills, site } from "../data";
 
 export function SkillsPage() {
@@ -20,9 +21,9 @@ export function SkillsPage() {
             <h1>Competenze</h1>
             <p className="tagline">Mix bilanciato tra sviluppo mobile, web, AI e linguaggi core.</p>
             <div className="hero-actions">
-              <a className="button primary" href="./progetti.html">
+              <Link className="button primary" to="/progetti">
                 Progetti in evidenza
-              </a>
+              </Link>
               <a className="button ghost" href={site.cvUrl} target="_blank" rel="noopener">
                 CV completo
               </a>

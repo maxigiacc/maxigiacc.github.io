@@ -427,6 +427,49 @@ a {
   font-weight: 600;
 }
 
+.accordion {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.2rem 1.4rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.accordion + .accordion {
+  margin-top: 1rem;
+}
+
+.accordion summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.accordion[open] summary::after {
+  content: "–";
+}
+
+.accordion-body {
+  margin-top: 0.9rem;
+  color: var(--muted);
+}
+
 .filter-bar {
   display: flex;
   flex-wrap: wrap;

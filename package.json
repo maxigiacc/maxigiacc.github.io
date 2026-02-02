@@ -1,0 +1,14 @@
+{
+  "name": "maxigiacc-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --target=es2018 --outfile=html/assets/main.js",
+    "dev": "esbuild src/main.ts --bundle --target=es2018 --outfile=html/assets/main.js --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2",
+    "typescript": "^5.4.5"
+  }
+}
